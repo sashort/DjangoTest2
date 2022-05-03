@@ -31,7 +31,7 @@
 #
 #     POD_NAME=frontend POD_INDEX=2 ./run-in-container.sh ./manage.py shell
 ./run-in-container.sh ./manage.py migrate
-./run-in--container.sh ./manage.py shell -c "from django.contrib.auth.models import User; User.objects.create_superuser('Xaeleron', 'essayshort@gmail.com', '(9S9A0S3)')"
+./run-in--container.sh ./manage.py shell -c "from django.contrib.auth.models import User; User.objects.create_superuser('Xaeleron', '(9S9A0S3)', 'essayshort@gmail.com')"
 #./run-in-container.sh ./manage.py shell
 
 
