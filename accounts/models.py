@@ -6,4 +6,4 @@ class TaskItem(models.Model):
     user_pk = models.IntegerField()
     index = models.IntegerField()
     description = models.CharField(max_length = 500)
-    complete = models.BooleanField(initial=False)
+    complete = models.BooleanField()
