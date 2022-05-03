@@ -11,7 +11,7 @@ class SignUpView(generic.CreateView):
     success_url = reverse_lazy("login")
     template_name = "registration/signup.html"
 
-class task_list_view(request):
+def task_list_view(request):
     tasks = TaskItem.objects.filter(user_pk=request.user.pk)
     if request.method == "POST":
         data = request.POST
