@@ -16,7 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import include, url
 from django.views.generic.base import TemplateView
-from accounts.views import task_list_view
 
 urlpatterns = [
     #path('accounts/', include('accounts.urls')),
