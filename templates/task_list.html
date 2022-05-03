@@ -19,9 +19,7 @@
 	</style>
 </head>
 	<h2>My Task List</h2>
-		{% if empty %}
-		<p>No Tasks Found</p>
-		{% else %}
+		{% if task_list %}
 		<dl>
 			<table class="Task List" border="2" cellpadding="8">
 				<caption><h3>My Task List</h3></caption>
@@ -45,6 +43,8 @@
 				</tbody>
 			</table>
 		</dl>
+		{% else %}
+		<p>No Tasks Found</p>
 		{% endif %}
 		<form method="post" id="frm">
             {% csrf_token %}
