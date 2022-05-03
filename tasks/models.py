@@ -9,4 +9,4 @@ class TaskItem(models.Model):
     complete = models.BooleanField()
     
     def __str__(self):
-        return self.name
+        return str(self.user_pk)
