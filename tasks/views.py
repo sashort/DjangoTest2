@@ -8,7 +8,7 @@ from django.shortcuts import render
 
 def task_list_view(request):
     tasks = TaskItem.objects.filter(user_pk=request.user.pk)
-	delete_index = "N/A"
+    delete_index = "N/A"
     if request.method == "POST":
         data = request.POST
         if data.get("action") != None: #data.get("action") = "add"
