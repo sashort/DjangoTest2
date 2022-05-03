@@ -4,6 +4,6 @@ from django.db import models
 
 class TaskItem(models.Model):
     user_pk = models.IntegerField()
-	index = models.IntegerField()
+    index = models.IntegerField()
     description = models.CharField(max_length = 500)
-	complete = forms.BooleanField(initial=False)
+    complete = forms.BooleanField(initial=False)
