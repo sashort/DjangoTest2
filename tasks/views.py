@@ -16,7 +16,7 @@ def task_list_view(request):
         else: #deleting item
             TaskItem.objects.filter(user_pk=request.user.pk, index=data.get(int(data.get("delete_index")))).delete()
             delete_index = int(data.get("delete_index")
-    context = {'task_list':TaskItem.objects.filter(user_pk=request.user.pk), 'delete_index': delete_index}
+    context = {'task_list':TaskItem.objects.filter(user_pk=request.user.pk)}
     return render(request, "task_list.html",context)
 	
 	
