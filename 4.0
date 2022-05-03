@@ -1,0 +1,2 @@
+Requirement already satisfied: Django in c:\users\essay\onedrive\desktop\django_auth\.venv\lib\site-packages (1.11)
+Requirement already satisfied: pytz in c:\users\essay\onedrive\desktop\django_auth\.venv\lib\site-packages (from Django) (2022.1)

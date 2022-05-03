@@ -1,0 +1,56 @@
+{% block content %}
+<head>
+	<style>
+		html { background-image: linear-gradient(#333, #FFF); color: white; font-family: helvetica; }
+		th { background-image: linear-gradient(#000, #333); color: white; }
+		td { background-color: white; color: black;}
+		tr:hover a::after {whote-spacwe: pre; content: '  ◀';}
+		a {text-decoration: none; color: black;}
+		html * {animation-name: appear; animation-duration: 1s;}
+		@keyframes appear {
+			from {
+				opacity: 0;
+			}
+
+			to {
+				opacity: 1;
+			}
+		}
+	</style>
+</head>
+	<h2>My Task List</h2>
+		{% if task_list %}
+		<dl>
+			<table class="Task List" border="2" cellpadding="8">
+				<caption><h3>My Task List</h3></caption>
+				<thead>
+					<tr>
+						<th></th>
+						<th><h4>#</h4></th>
+						<th><h4>Complete</h4></th>
+						<th><h4>Description</h4></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for task in task_list %}
+					<tr>
+						<td><button type="submit" form="frm" name="delete_index" value="{{ task.index }}">X</button></td>
+						<td>{{ task.index }}</td>
+						<td>{{ task.complete }}</td>
+						<td>{{ task.description }}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</dl>
+		{% else %}
+		<p>No Tasks Found</p>
+		{% endif %}
+		<form method="post" id="frm">
+		    <label for="description">Task Description:</label>
+            <input type="text" name="description">
+			<button name="action" value="add">Add New Task</button>
+		</form>
+{% endblock %}
+	
+		
