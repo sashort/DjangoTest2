@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='TaskItem',
             fields=[
-                ('id', user_pk = models.IntegerField()),
+                ('id', models.IntegerField()),
                 ('index', models.IntegerField()),
                 ('description', models.CharField(max_length = 500)),
                 ('complete', models.BooleanField()),
