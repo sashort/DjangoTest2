@@ -47,6 +47,7 @@
 		<p>No Tasks Found</p>
 		{% endif %}
 		<form method="post" id="frm">
+            {% csrf_token %}
 		    <label for="description">Task Description:</label>
             <input type="text" name="description">
 			<button name="action" value="add">Add New Task</button>
