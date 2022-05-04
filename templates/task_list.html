@@ -1,12 +1,12 @@
 {% block content %}
 <head>
 	<style>
-		html { background-image: linear-gradient(#333, #FFF); color: white; font-family: helvetica; }
+		html { background-image: linear-gradient(#c50, #3a3b3c); background-repeat: no-repeat; background-attachment: fixed; color: white; font-family: helvetica; }
 		th { background-image: linear-gradient(#000, #333); color: white; }
 		td { background-color: white; color: black;}
-		tr:hover a::after {whote-spacwe: pre; content: '  ◀';}
+		tr:hover a::after {white-space: pre; content: '  ◀';}
 		a {text-decoration: none; color: black;}
-		html * {animation-name: appear; animation-duration: 1s;}
+		html * {animation-name: appear; animation-duration: 1s; margin: auto;}
 		@keyframes appear {
 			from {
 				opacity: 0;
@@ -27,16 +27,15 @@
 					<tr>
 						<th></th>
 						<th><h4>#</h4></th>
-						<th><h4>Complete</h4></th>
 						<th><h4>Description</h4></th>
 					</tr>
 				</thead>
 				<tbody>
+					{% set counter = 0 %}
 					{% for task in task_list %}
 					<tr>
-						<td><button form="frm" name="delete_index" value={{ task.index }}>X</button></td>
-						<td>{{ task.index }}</td>
-						<td>{{ task.complete }}</td>
+						<td><button form="frm" name="delete_index" value={{ task.id }}>X</button></td>
+						<td>{{ counter++ }}</td>
 						<td>{{ task.description }}</td>
 					</tr>
 					{% endfor %}
