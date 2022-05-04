@@ -4,7 +4,7 @@
 		html { background-image: linear-gradient(#c50, #3a3b3c); background-repeat: no-repeat; background-attachment: fixed; color: white; font-family: helvetica; }
 		th { background-image: linear-gradient(#000, #333); color: white; }
 		td { background-color: white; color: black;}
-		tr:hover a::after {white-space: pre; content: '  ◀';}
+		tr:hover {background-color: #333; color: white;}
 		a {text-decoration: none; color: white; background-color: black; padding: 30px; margin: 10px;}
 		{% if fade_in %}
 			html * {animation-name: appear; animation-duration: 1s;}
@@ -44,15 +44,15 @@
 				{% endfor %}
 			</tbody>
 		</table>
-		<br/><br/><br/>
 		<form method="post" id="frm">
 			{% csrf_token %}
 			<label for="description">Task Description:</label>
 			<input type="text" name="description">
 			<button name="action" value="add">Add New Task</button>
-			<a href="">Return to Home Page</a>
-			<a href="{% url 'logout' %}">Log Out</a>
 		</form>
+		<br/><br/><br/>
+		<a href="">Return to Home Page</a>
+		<a href="{% url 'logout' %}">Log Out</a>
 	{% elif user.is_authenticated %}
 		<table class="Task List" border="2" cellpadding="8">
 			<caption><h3>My Task List</h3></caption>

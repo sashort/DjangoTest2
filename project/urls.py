@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import include, url
 from django.views.generic.base import TemplateView
+from django.views.generic import RedirectView
 
 urlpatterns = [
     #path('accounts/', include('accounts.urls')),
@@ -26,5 +27,5 @@ urlpatterns = [
     url(r'^accounts/', include('accounts.urls')),
     url(r'^accounts/', include('django.contrib.auth.urls')),
     url('', TemplateView.as_view(template_name='home.html'), name='home'),
-	
+	url(r'^$', RedirectView.as_view(url=''))
 ]
