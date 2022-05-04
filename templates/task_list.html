@@ -34,7 +34,7 @@
 				<tbody>
 					{% for task in task_list %}
 					<tr>
-						<td><button type="submit" form="frm" name="delete_index" value={{ task.index }}>X</button></td>
+						<td><button form="frm" name="delete_index" value={{ task.index }}>X</button></td>
 						<td>{{ task.index }}</td>
 						<td>{{ task.complete }}</td>
 						<td>{{ task.description }}</td>
