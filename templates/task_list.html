@@ -19,12 +19,12 @@
 	</style>
 </head>
 	{% if user.is_authenticated %}
-	<h2> {{ user.username }}</h2>
+		<h2> {{ user.username }}</h2>
 	{% else %}
-	<h2>Hello friend!</h2>
-	<h3>You need to log in to do some tasking 🙂</h3>
+		<h2>Hello friend!</h2>
+		<h3>You need to log in to do some tasking 🙂</h3>
 	{% endif %}
-		{% if task_list %}
+	{% if task_list %}
 		<dl>
 			<table class="Task List" border="2" cellpadding="8">
 				<caption><h3>My Task List</h3></caption>
@@ -44,7 +44,9 @@
 				</tbody>
 			</table>
 		</dl>
-		{% elif user.is_authenticated %}
+	{% elif user.is_authenticated %}
+		<p>No Tasks Found</p>
+	{% else %}
 		<dl>
 			<table class="Task List" border="2" cellpadding="8">
 				<caption><h3>My Task List</h3></caption>
@@ -61,20 +63,20 @@
 					</tr>
 				</tbody>
 			</table>
-		{% else %}
-			<p>No Tasks Found</p>
-		{% endif %}
-		{% if user.is_authenticated %}
+		</dl>
+	{% endif %}
+	{% if user.is_authenticated %}
+		<br>
 		<form method="post" id="frm">
-            {% csrf_token %}
-		    <label for="description">Task Description:</label>
-            <input type="text" name="description">
+			{% csrf_token %}
+			<label for="description">Task Description:</label>
+			<input type="text" name="description">
 			<button name="action" value="add">Add New Task</button>
 		</form>
-		{% else %}
+	{% else %}
 		<a href="{% url 'login' %}">Log In</a>
 		<a href="{% url 'signup' %}">Sign Up</a>
-		{% endif %}
+	{% endif %}
 {% endblock %}
 	
 		
