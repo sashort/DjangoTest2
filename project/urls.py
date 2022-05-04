@@ -27,5 +27,6 @@ urlpatterns = [
     url(r'^accounts/', include('accounts.urls')),
     url(r'^accounts/', include('django.contrib.auth.urls')),
     url('', TemplateView.as_view(template_name='home.html'), name='home'),
-	url(r'^*$',TemplateView.as_view(template_name='home.html'), name='home'),
 ]
+
+handler404 = "accounts.views.page_not_found_view"
