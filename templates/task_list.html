@@ -5,7 +5,7 @@
 		th { background-image: linear-gradient(#000, #333); color: white; }
 		td { background-color: white; color: black;}
 		tr:hover a::after {white-space: pre; content: '  ◀';}
-		a {text-decoration: none; color: black;}
+		a {text-decoration: none; color: white; background-color: black; padding: 30px; margin: 10px;}
 		html * {animation-name: appear; animation-duration: 1s;}
 		@keyframes appear {
 			from {
@@ -18,7 +18,12 @@
 		}
 	</style>
 </head>
+	{% if user.is_authenticated %}
 	<h2> {{ user.username }}</h2>
+	{% else %}
+	<h2>Hello friend!</h2>
+	<h3>You need to log in to do some tasking 🙂</h3>
+	{% endif %}
 		{% if task_list %}
 		<dl>
 			<table class="Task List" border="2" cellpadding="8">
@@ -39,15 +44,37 @@
 				</tbody>
 			</table>
 		</dl>
+		{% elif user.is_authenticated %}
+		<dl>
+			<table class="Task List" border="2" cellpadding="8">
+				<caption><h3>My Task List</h3></caption>
+				<thead>
+					<tr>
+						<th></th>
+						<th><h4>Description</h4></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>⚠️</td>
+						<td>Task 1: Sign in or create a new account</td>
+					</tr>
+				</tbody>
+			</table>
 		{% else %}
-		<p>No Tasks Found</p>
+			<p>No Tasks Found</p>
 		{% endif %}
+		{% if user.is_authenticated %}
 		<form method="post" id="frm">
             {% csrf_token %}
 		    <label for="description">Task Description:</label>
             <input type="text" name="description">
 			<button name="action" value="add">Add New Task</button>
 		</form>
+		{% else %}
+		<a href="{% url 'login' %}">Log In</a>
+		<a href="{% url 'signup' %}">Sign Up</a>
+		{% endif %}
 {% endblock %}
 	
 		
