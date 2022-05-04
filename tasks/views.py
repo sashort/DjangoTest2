@@ -13,9 +13,9 @@ def task_list_view(request):
         if data.get("action") == "add": #data.get("action") = "add"
             TaskItem.objects.create(user_pk=request.user.pk, index=len(tasks) + 1, description=data.get("description"), complete=False)
         else: #deleting item
-            context = TaskItem.objects.filter(user_pk=request.user.pk, index=data.get(int(data.get("action").replace("delete ",""))))
+            context = {'task_list': TaskItem.objects.filter(user_pk=request.user.pk, index=data.get(int(data.get("action").replace("delete ",""))))}
             return render(request, "task_list.html",context)
-            TaskItem.objects.filter(user_pk=request.user.pk, index=data.get(int(data.get("action").replace("delete ","")))).delete()
+            TaskItem.objects.get(user_pk=request.user.pk, index=data.get(int(data.get("action").replace("delete ","")))).delete()
     context = {'task_list':TaskItem.objects.filter(user_pk=request.user.pk)}
     return render(request, "task_list.html",context)    
 	
