@@ -73,9 +73,10 @@
 			<label for="description">Task Description:</label>
 			<input type="text" name="description">
 			<button name="action" value="add">Add New Task</button>
-			<a href="{% url 'home' %}">Return to Home Page</a>
-			<a href="{% url 'logout' %}">Log Out</a>
 		</form>
+		<br/><br/><br/>
+		<a href="{% url 'home' %}">Return to Home Page</a>
+		<a href="{% url 'logout' %}">Log Out</a>
 	{% else %}
 		<table class="Task List" border="2" cellpadding="8">
 			<caption><h3>My Task List</h3></caption>
