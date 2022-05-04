@@ -25,50 +25,47 @@
 		<h3>You need to log in to do some tasking 🙂</h3>
 	{% endif %}
 	{% if task_list %}
-		<dl>
-			<table class="Task List" border="2" cellpadding="8">
-				<caption><h3>My Task List</h3></caption>
-				<thead>
-					<tr>
-						<th></th>
-						<th><h4>Description</h4></th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for task in task_list %}
-					<tr>
-						<td><button form="frm" name="delete_index" value={{ task.id }}>X</button></td>
-						<td>{{ task.description }}</td>
-					</tr>
-					{% endfor %}
-				</tbody>
-			</table>
-		</dl>
+		<table class="Task List" border="2" cellpadding="8">
+			<caption><h3>My Task List</h3></caption>
+			<thead>
+				<tr>
+					<th></th>
+					<th><h4>Description</h4></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for task in task_list %}
+				<tr>
+					<td><button form="frm" name="delete_index" value={{ task.id }}>X</button></td>
+					<td>{{ task.description }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<form method="post" id="frm">
+			{% csrf_token %}
+			<label for="description">Task Description:</label>
+			<input type="text" name="description">
+			<button name="action" value="add">Add New Task</button>
+			<a href="">Return to Home Page</a>
+			<a href="{% url 'logout' %}">Log Out</a>
+		</form>
 	{% elif user.is_authenticated %}
-		<p>No Tasks Found</p>
-	{% else %}
-		<dl>
-			<table class="Task List" border="2" cellpadding="8">
-				<caption><h3>My Task List</h3></caption>
-				<thead>
-					<tr>
-						<th></th>
-						<th><h4>Description</h4></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>⚠️</td>
-						<td>Task 1: Log In or Sign Up</td>
-					</tr>
-				</tbody>
-			</table>
-		</dl>
-	{% endif %}
-	{% if user.is_authenticated %}
-		<br>
-		<br>
-		<br>
+		<table class="Task List" border="2" cellpadding="8">
+			<caption><h3>My Task List</h3></caption>
+			<thead>
+				<tr>
+					<th></th>
+					<th><h4>Description</h4></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>⚠️</td>
+					<td>Your first task will appear here when you create it.</td>
+				</tr>
+			</tbody>
+		</table>
 		<form method="post" id="frm">
 			{% csrf_token %}
 			<label for="description">Task Description:</label>
@@ -78,6 +75,21 @@
 			<a href="{% url 'logout' %}">Log Out</a>
 		</form>
 	{% else %}
+		<table class="Task List" border="2" cellpadding="8">
+			<caption><h3>My Task List</h3></caption>
+			<thead>
+				<tr>
+					<th></th>
+					<th><h4>Description</h4></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>⚠️</td>
+					<td>Task 1: Log In or Sign Up</td>
+				</tr>
+			</tbody>
+		</table>
 		<a href="{% url 'login' %}">Log In</a>
 		<a href="{% url 'signup' %}">Sign Up</a>
 	{% endif %}
