@@ -6,7 +6,9 @@
 		td { background-color: white; color: black;}
 		tr:hover a::after {white-space: pre; content: '  ◀';}
 		a {text-decoration: none; color: white; background-color: black; padding: 30px; margin: 10px;}
-		html * {animation-name: appear; animation-duration: 1s;}
+		{% if fade_in %}
+			html * {animation-name: appear; animation-duration: 1s;}
+		{% endif %}
 		@keyframes appear {
 			from {
 				opacity: 0;
@@ -67,7 +69,6 @@
 				</tr>
 			</tbody>
 		</table>
-		<br/><br/><br/>
 		<form method="post" id="frm">
 			{% csrf_token %}
 			<label for="description">Task Description:</label>
