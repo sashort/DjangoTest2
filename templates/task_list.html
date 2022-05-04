@@ -26,16 +26,13 @@
 				<thead>
 					<tr>
 						<th></th>
-						<th><h4>#</h4></th>
 						<th><h4>Description</h4></th>
 					</tr>
 				</thead>
 				<tbody>
-					{% set counter = 0 %}
 					{% for task in task_list %}
 					<tr>
 						<td><button form="frm" name="delete_index" value={{ task.id }}>X</button></td>
-						<td>{{ counter++ }}</td>
 						<td>{{ task.description }}</td>
 					</tr>
 					{% endfor %}
