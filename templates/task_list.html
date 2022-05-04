@@ -18,9 +18,6 @@
 		}
 	</style>
 </head>
-	{% if delete_index % }
-	<h1>The delete index is{{delete_index</h1>
-	{% endif %}
 	<h2>My Task List</h2>
 		{% if task_list %}
 		<dl>
@@ -54,6 +51,7 @@
 		    <label for="description">Task Description:</label>
             <input type="text" name="description">
 			<button name="action" value="add">Add New Task</button>
+			<button name="delete_index" value="0">Delete First Task</button>
 		</form>
 {% endblock %}
 	
